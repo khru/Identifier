@@ -2,39 +2,29 @@
 
 namespace WeDev\Identifier;
 
-class Token
+abstract class Token
 {
     private const DICTIONARY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_1234567890';
     private const RANDOM_BYTES = 2048;
-    private const MAX_RANDOM = 512;
-
-    private $token;
-
-    public function __construct()
-    {
-        $this->token = $this->createRandomString();
-    }
 
     private function randomStringFromDictionary(): string
     {
         $str = self::DICTIONARY . microtime();
         $cad = '';
         for ($i = 0; $i < 15; ++$i) {
-            $cad .= mb_substr($str, mt_rand(0, 73), 1) . microtime();
+            $cad .= mb_substr($str, mt_rand(0, strlen($str)), 1) . microtime();
         }
 
-        return $cad;
+        return base64_encode(str_replace(' ', '', $cad));
     }
 
-    public function createRandomString(): string
+    public function createRandomString($content = null): string
     {
         return  hash_hmac('sha512',
-            $this->randomStringFromDictionary(),
-            str_shuffle(bin2hex(random_bytes(self::RANDOM_BYTES)) . sha1(mt_rand(0, self::MAX_RANDOM))));
+            $this->randomStringFromDictionary() . $content,
+            str_shuffle(bin2hex(random_bytes(self::RANDOM_BYTES)) . md5($this->randomStringFromDictionary() . $content)));
     }
 
-    public function __toString()
-    {
-        return $this->token;
-    }
+    abstract public function __toString(): string;
+    abstract public function __invoke();
 }

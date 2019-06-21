@@ -1,14 +1,16 @@
 <?php
 
+
 namespace WeDev\Identifier;
+
 
 use Ramsey\Uuid\Uuid;
 
-class RandomIdentificator extends Identificator
+class CipherIdentificator extends Identificator
 {
-    public function __construct()
+    public function __construct($content)
     {
-        $this->id = Uuid::uuid5(Uuid::NAMESPACE_DNS, new RandomToken());
+        $this->id = Uuid::uuid5(Uuid::NAMESPACE_DNS, new CipherToken($content));
     }
 
     public function __invoke(): string

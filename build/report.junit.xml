@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="WeDev Test Suite" tests="6" assertions="6" errors="0" failures="0" skipped="0" time="0.025959">
+    <testsuite name="WeDev\Identifier\Tests\CipherIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/CipherIdentificatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.018748">
+      <testcase name="should_generate_valid_id" class="WeDev\Identifier\Tests\CipherIdentificatorTest" classname="WeDev.Identifier.Tests.CipherIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/CipherIdentificatorTest.php" line="24" assertions="1" time="0.013805"/>
+      <testcase name="should_not_be_equal_with_three_equals" class="WeDev\Identifier\Tests\CipherIdentificatorTest" classname="WeDev.Identifier.Tests.CipherIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/CipherIdentificatorTest.php" line="32" assertions="1" time="0.002799"/>
+      <testcase name="should_be_equal_with_two_equals" class="WeDev\Identifier\Tests\CipherIdentificatorTest" classname="WeDev.Identifier.Tests.CipherIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/CipherIdentificatorTest.php" line="41" assertions="1" time="0.002144"/>
+    </testsuite>
+    <testsuite name="WeDev\Identifier\Tests\RandomIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/RandomIdentificatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.007211">
+      <testcase name="should_generate_valid_id" class="WeDev\Identifier\Tests\RandomIdentificatorTest" classname="WeDev.Identifier.Tests.RandomIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/RandomIdentificatorTest.php" line="14" assertions="1" time="0.002827"/>
+      <testcase name="should_not_be_equal_with_three_equals" class="WeDev\Identifier\Tests\RandomIdentificatorTest" classname="WeDev.Identifier.Tests.RandomIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/RandomIdentificatorTest.php" line="23" assertions="1" time="0.002292"/>
+      <testcase name="should_be_equal_with_two_equals" class="WeDev\Identifier\Tests\RandomIdentificatorTest" classname="WeDev.Identifier.Tests.RandomIdentificatorTest" file="/home/evalverde/projects/Identifier/Tests/RandomIdentificatorTest.php" line="33" assertions="1" time="0.002092"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

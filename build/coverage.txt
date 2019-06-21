@@ -1,0 +1,20 @@
+
+
+Code Coverage Report:    
+  2019-06-21 23:55:14    
+                         
+ Summary:                
+  Classes: 16.67% (1/6)  
+  Methods: 50.00% (10/20)
+  Lines:   50.00% (20/40)
+
+\WeDev\Identifier::WeDev\Identifier\CipherIdentificator
+  Methods:  50.00% ( 2/ 4)   Lines:  50.00% (  3/  6)
+\WeDev\Identifier::WeDev\Identifier\CipherToken
+  Methods:  66.67% ( 2/ 3)   Lines:  75.00% (  3/  4)
+\WeDev\Identifier::WeDev\Identifier\RandomIdentificator
+  Methods:  50.00% ( 2/ 4)   Lines:  50.00% (  3/  6)
+\WeDev\Identifier::WeDev\Identifier\RandomToken
+  Methods:  66.67% ( 2/ 3)   Lines:  75.00% (  3/  4)
+\WeDev\Identifier::WeDev\Identifier\Token
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  8/  8)

@@ -6,7 +6,9 @@ namespace WeDev\Identifier;
 
 abstract class Identificator
 {
-    private $id;
+    protected $id;
 
     abstract public function __toString(): string;
+    abstract public function __invoke();
+    abstract public function equals(Identificator $id): bool;
 }
