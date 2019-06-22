@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace WeDev\Identifier;
-
 
 class CipherToken extends Token
 {
@@ -18,7 +18,7 @@ class CipherToken extends Token
         return $this->token;
     }
 
-    public function __invoke()
+    public function __invoke(): string
     {
         return $this->token;
     }

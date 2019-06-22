@@ -8,7 +8,6 @@ use WeDev\Identifier\CipherIdentificator;
 
 class CipherIdentificatorTest extends TestCase
 {
-
     private const A_ID = 1;
     private $id;
 
@@ -21,7 +20,7 @@ class CipherIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_generate_valid_id()
+    public function shouldGenerateValidId()
     {
         $this->assertTrue(Uuid::isValid($this->id));
     }
@@ -29,7 +28,7 @@ class CipherIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_not_be_equal_with_three_equals()
+    public function shouldNotBeEqualWithThreeEquals()
     {
         $cloneId = clone $this->id;
         $this->assertFalse($this->id === $cloneId);
@@ -38,7 +37,7 @@ class CipherIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_be_equal_with_two_equals()
+    public function shouldBeEqualWithTwoEquals()
     {
         $cloneId = clone $this->id;
         $this->assertTrue($this->id == $cloneId);

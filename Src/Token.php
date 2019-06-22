@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WeDev\Identifier;
 
 abstract class Token
@@ -20,11 +22,14 @@ abstract class Token
 
     public function createRandomString($content = null): string
     {
-        return  hash_hmac('sha512',
+        return  hash_hmac(
+            'sha512',
             $this->randomStringFromDictionary() . $content,
-            str_shuffle(bin2hex(random_bytes(self::RANDOM_BYTES)) . md5($this->randomStringFromDictionary() . $content)));
+            str_shuffle(bin2hex(random_bytes(self::RANDOM_BYTES)) . md5($this->randomStringFromDictionary() . $content))
+        );
     }
 
     abstract public function __toString(): string;
+
     abstract public function __invoke();
 }

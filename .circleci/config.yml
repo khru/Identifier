@@ -21,4 +21,4 @@ jobs: # a collection of steps
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
             - vendor
-      - run: vendor/bin/phpunit
+      - run: ./vendor/bin/phpunit

@@ -11,7 +11,7 @@ class RandomIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_generate_valid_id()
+    public function shouldGenerateValidId()
     {
         $id = new RandomIdentificator();
         $this->assertTrue(Uuid::isValid($id));
@@ -20,7 +20,7 @@ class RandomIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_not_be_equal_with_three_equals()
+    public function shouldNotBeEqualWithThreeEquals()
     {
         $id = new RandomIdentificator();
         $cloneId = clone $id;
@@ -30,7 +30,7 @@ class RandomIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function should_be_equal_with_two_equals()
+    public function shouldBeEqualWithTwoEquals()
     {
         $id = new RandomIdentificator();
         $cloneId = clone $id;
