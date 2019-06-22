@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1561161314">
-  <project timestamp="1561161314">
+<coverage generated="1561210827">
+  <project timestamp="1561210827">
     <package name="WeDev\Identifier">
       <file name="/home/evalverde/projects/Identifier/Src/CipherIdentificator.php">
         <class name="WeDev\Identifier\CipherIdentificator" namespace="WeDev\Identifier">
