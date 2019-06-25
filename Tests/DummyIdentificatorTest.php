@@ -5,11 +5,13 @@ namespace WeDev\Identifier\Tests;
 use PHPUnit\Framework\TestCase;
 use WeDev\Identifier\CipherIdentificator;
 use WeDev\Identifier\DummyIdentificator;
+use WeDev\Identifier\NumericIdentificator;
 use WeDev\Identifier\RandomIdentificator;
 
 class DummyIdentificatorTest extends TestCase
 {
     private const A_RANDOM_ID = 'akjshdkasjhdakjshdkajshdaskjd';
+    private const A_NUMERIC_ID = '5';
 
     /**
      * @test
@@ -58,4 +60,15 @@ class DummyIdentificatorTest extends TestCase
         $id = new DummyIdentificator((string) $a_id);
         $this->assertTrue($id->equals($a_id));
     }
+
+    /**
+     * @test
+     */
+    public function shouldBeEqualByNumericId()
+    {
+        $a_id = new NumericIdentificator(self::A_NUMERIC_ID);
+        $id = new DummyIdentificator((string) $a_id);
+        $this->assertTrue($id->equals($a_id));
+    }
+
 }

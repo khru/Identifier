@@ -16,6 +16,10 @@ class DummyIdentificator extends Identificator
         return $this->id ? (string) $this->id : '';
     }
 
+    /**
+     * This method could return anything
+     * because it may take anything as an argument
+     */
     public function __invoke()
     {
         return $this->id;
