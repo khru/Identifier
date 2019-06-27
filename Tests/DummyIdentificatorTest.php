@@ -18,7 +18,7 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeNullOnCall()
     {
-        $id = new DummyIdentificator();
+        $id = DummyIdentificator::generate();
         $this->assertNull($id());
     }
 
@@ -27,7 +27,7 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeEmptyString()
     {
-        $id = new DummyIdentificator();
+        $id = DummyIdentificator::generate();
         $this->assertEmpty((string) $id);
     }
 
@@ -36,7 +36,7 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeEqualNullIdentificator()
     {
-        $id = new DummyIdentificator();
+        $id = DummyIdentificator::generate();
         $cloneId = clone $id;
         $this->assertTrue($id->equals($cloneId));
     }
@@ -46,8 +46,8 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeEqualByRandomId()
     {
-        $a_id = new RandomIdentificator();
-        $id = new DummyIdentificator((string) $a_id);
+        $a_id = RandomIdentificator::generate();
+        $id = DummyIdentificator::generate((string) $a_id);
         $this->assertTrue($id->equals($a_id));
     }
 
@@ -56,8 +56,8 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeEqualByCipherId()
     {
-        $a_id = new CipherIdentificator(self::A_RANDOM_ID);
-        $id = new DummyIdentificator((string) $a_id);
+        $a_id = CipherIdentificator::generate(self::A_RANDOM_ID);
+        $id = DummyIdentificator::generate((string) $a_id);
         $this->assertTrue($id->equals($a_id));
     }
 
@@ -66,8 +66,8 @@ class DummyIdentificatorTest extends TestCase
      */
     public function shouldBeEqualByNumericId()
     {
-        $a_id = new NumericIdentificator(self::A_NUMERIC_ID);
-        $id = new DummyIdentificator((string) $a_id);
+        $a_id = NumericIdentificator::generate(self::A_NUMERIC_ID);
+        $id = DummyIdentificator::generate((string) $a_id);
         $this->assertTrue($id->equals($a_id));
     }
 

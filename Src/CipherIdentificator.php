@@ -8,9 +8,9 @@ use Ramsey\Uuid\Uuid;
 
 class CipherIdentificator extends Identificator
 {
-    public function __construct($content)
+    private function __construct(string $content)
     {
-        $this->id = Uuid::uuid5(Uuid::NAMESPACE_DNS, new CipherToken($content));
+        $this->id = Uuid::uuid5(Uuid::NAMESPACE_DNS, CipherToken::generate($content))->toString();
     }
 
     public function __invoke(): string
@@ -25,6 +25,11 @@ class CipherIdentificator extends Identificator
 
     public function __toString(): string
     {
-        return $this->id->toString();
+        return $this->id;
+    }
+
+    public static function generate(string $content): self
+    {
+        return new static($content);
     }
 }

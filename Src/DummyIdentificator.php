@@ -6,7 +6,7 @@ namespace WeDev\Identifier;
 
 class DummyIdentificator extends Identificator
 {
-    public function __construct($content = null)
+    private function __construct($content = null)
     {
         $this->id = $content;
     }
@@ -28,5 +28,10 @@ class DummyIdentificator extends Identificator
     public function equals(Identificator $id): bool
     {
         return $this->__toString() === $id->__toString();
+    }
+
+    public static function generate($content = null): self
+    {
+        return new static($content);
     }
 }

@@ -8,7 +8,7 @@ class CipherToken extends Token
 {
     private $token;
 
-    public function __construct($content)
+    private function __construct(string $content)
     {
         $this->token = $this->createRandomString($content);
     }
@@ -21,5 +21,10 @@ class CipherToken extends Token
     public function __invoke(): string
     {
         return $this->token;
+    }
+
+    public static function generate(string $content): self
+    {
+        return new static($content);
     }
 }

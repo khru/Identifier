@@ -8,7 +8,7 @@ class RandomToken extends Token
 {
     private $token;
 
-    public function __construct()
+    private function __construct()
     {
         $this->token = $this->createRandomString();
     }
@@ -21,5 +21,10 @@ class RandomToken extends Token
     public function __invoke(): string
     {
         return $this->token;
+    }
+
+    public static function generate(): self
+    {
+        return new static();
     }
 }

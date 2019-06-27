@@ -8,13 +8,15 @@ use WeDev\Identifier\CipherIdentificator;
 
 class CipherIdentificatorTest extends TestCase
 {
-    private const A_ID = 1;
+    private const A_INTEGER_ID = 1;
+    private const A_FLOAT_ID = 1.3;
+    private const A_STRING_ID = "dsfsdfdsf";
     private $id;
 
     public function setUp()
     {
         parent::setUp();
-        $this->id = new CipherIdentificator(self::A_ID);
+        $this->id = CipherIdentificator::generate(self::A_STRING_ID);
     }
 
     /**
@@ -23,6 +25,24 @@ class CipherIdentificatorTest extends TestCase
     public function shouldGenerateValidId()
     {
         $this->assertTrue(Uuid::isValid($this->id));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldWorkWithFloats()
+    {
+        $id = CipherIdentificator::generate(self::A_FLOAT_ID);
+        $this->assertTrue(Uuid::isValid($id));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldWorkWithIntegers()
+    {
+        $id = CipherIdentificator::generate(self::A_INTEGER_ID);
+        $this->assertTrue(Uuid::isValid($id));
     }
 
     /**
@@ -42,4 +62,5 @@ class CipherIdentificatorTest extends TestCase
         $cloneId = clone $this->id;
         $this->assertTrue($this->id == $cloneId);
     }
+
 }

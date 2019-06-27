@@ -16,8 +16,8 @@ class NumericIdentificatorTest extends TestCase
      */
     public function shouldGenerateValidId()
     {
-        $id = new NumericIdentificator(self::A_ID);
-        $this->assertTrue($id() === 5);
+        $id = NumericIdentificator::generate(self::A_ID);
+        $this->assertTrue($id() === self::A_ID);
     }
 
     /**
@@ -25,7 +25,7 @@ class NumericIdentificatorTest extends TestCase
      */
     public function shouldNotBeEqualWithThreeEquals()
     {
-        $id = new NumericIdentificator(self::A_ID);
+        $id = NumericIdentificator::generate(self::A_ID);
         $cloneId = clone $id;
         $this->assertFalse($id === $cloneId);
     }
@@ -35,7 +35,7 @@ class NumericIdentificatorTest extends TestCase
      */
     public function shouldBeEqualWithTwoEquals()
     {
-        $id = new NumericIdentificator(self::A_ID);
+        $id = NumericIdentificator::generate(self::A_ID);
         $cloneId = clone $id;
         $this->assertTrue($id == $cloneId);
     }

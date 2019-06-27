@@ -8,7 +8,7 @@ namespace WeDev\Identifier;
 class NumericIdentificator extends Identificator
 {
 
-    public function __construct(int $id)
+    private function __construct(int $id)
     {
         $this->id = $id;
     }
@@ -26,5 +26,10 @@ class NumericIdentificator extends Identificator
     public function equals(Identificator $id): bool
     {
         return $this->__toString() === $id->__toString();
+    }
+
+    public static function generate(int $id): self
+    {
+        return new static($id);
     }
 }

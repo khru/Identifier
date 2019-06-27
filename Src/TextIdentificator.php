@@ -8,7 +8,7 @@ namespace WeDev\Identifier;
 class TextIdentificator extends Identificator
 {
 
-    public function __construct(string $id)
+    private function __construct(string $id)
     {
         $this->id = $id;
     }
@@ -26,5 +26,10 @@ class TextIdentificator extends Identificator
     public function equals(Identificator $id): bool
     {
         return $this->__toString() === $id->__toString();
+    }
+
+    public static function generate(string $content): self
+    {
+        return new static($content);
     }
 }
