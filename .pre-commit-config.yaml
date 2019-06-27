@@ -4,8 +4,8 @@ repos:
       hooks:
         - id: check-yaml
           files: \.(yaml|yml)$
-  -   repo: https://github.com/hootsuite/pre-commit-php.git
-      rev: 1.2.0
+  -   repo: https://github.com/khru/pre-commit-php.git
+      rev: master
       hooks:
         - id: php-lint-all
           name: PHP Syntax Check (Comprehensive)
