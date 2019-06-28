@@ -18,7 +18,7 @@ class DummyIdentificator extends Identificator
 
     /**
      * This method could return anything
-     * because it may take anything as an argument
+     * because it may take anything as an argument.
      */
     public function __invoke()
     {
@@ -33,5 +33,10 @@ class DummyIdentificator extends Identificator
     public static function generate($content = null): self
     {
         return new static($content);
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }

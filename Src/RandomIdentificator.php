@@ -8,9 +8,15 @@ use Ramsey\Uuid\Uuid;
 
 class RandomIdentificator extends Identificator
 {
+    /**
+     * RandomIdentificator constructor.
+     */
     private function __construct()
     {
-        $this->id = Uuid::uuid5(Uuid::uuid5(Uuid::NAMESPACE_DNS, RandomToken::generate()), RandomToken::generate());
+        $this->id = Uuid::uuid5(
+            Uuid::uuid5(Uuid::NAMESPACE_DNS, RandomToken::generate()),
+            RandomToken::generate()
+        )->toString();
     }
 
     public function __invoke(): string
@@ -31,5 +37,10 @@ class RandomIdentificator extends Identificator
     public static function generate(): self
     {
         return new static();
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }

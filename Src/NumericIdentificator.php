@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace WeDev\Identifier;
 
-
 class NumericIdentificator extends Identificator
 {
-
     private function __construct(int $id)
     {
         $this->id = $id;
@@ -31,5 +29,10 @@ class NumericIdentificator extends Identificator
     public static function generate(int $id): self
     {
         return new static($id);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 }

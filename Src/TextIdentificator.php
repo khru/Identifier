@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace WeDev\Identifier;
 
-
 class TextIdentificator extends Identificator
 {
-
     private function __construct(string $id)
     {
         $this->id = $id;
@@ -31,5 +29,10 @@ class TextIdentificator extends Identificator
     public static function generate(string $content): self
     {
         return new static($content);
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }
