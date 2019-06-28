@@ -13,10 +13,10 @@ class RandomIdentificator extends Identificator
      */
     private function __construct()
     {
-        $this->id = Uuid::uuid5(
+        $this->id = (Uuid::uuid5(
             Uuid::uuid5(Uuid::NAMESPACE_DNS, RandomToken::generate()),
             RandomToken::generate()
-        )->toString();
+        ))->toString();
     }
 
     public function __invoke(): string
@@ -31,7 +31,7 @@ class RandomIdentificator extends Identificator
 
     public function __toString(): string
     {
-        return $this->id->toString();
+        return $this->id;
     }
 
     public static function generate(): self
