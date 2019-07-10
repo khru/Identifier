@@ -6,14 +6,16 @@ namespace WeDev\Identifier;
 
 class DummyIdentificator extends Identificator
 {
-    private function __construct($content = null)
+    private const EMPTY_STRING = '';
+
+    private function __construct(string $content = '')
     {
         $this->id = $content;
     }
 
     public function __toString(): string
     {
-        return $this->id ? (string) $this->id : '';
+        return null !== $this->id ? $this->id : self::EMPTY_STRING;
     }
 
     /**
@@ -30,7 +32,7 @@ class DummyIdentificator extends Identificator
         return $this->__toString() === $id->__toString();
     }
 
-    public static function generate($content = null): self
+    public static function generate(string $content = ''): self
     {
         return new static($content);
     }

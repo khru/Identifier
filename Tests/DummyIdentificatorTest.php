@@ -16,10 +16,10 @@ class DummyIdentificatorTest extends TestCase
     /**
      * @test
      */
-    public function shouldBeNullOnCall()
+    public function shouldBeEmptyOnCall()
     {
         $id = DummyIdentificator::generate();
-        $this->assertNull($id());
+        $this->assertEmpty($id());
     }
 
     /**
@@ -70,5 +70,4 @@ class DummyIdentificatorTest extends TestCase
         $id = DummyIdentificator::generate((string) $a_id);
         $this->assertTrue($id->equals($a_id));
     }
-
 }

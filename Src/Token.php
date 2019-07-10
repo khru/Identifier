@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WeDev\Identifier;
 
-abstract class Token
+abstract class Token implements \Countable
 {
     private const DICTIONARY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_1234567890';
     private const RANDOM_BYTES = 2048;
@@ -14,32 +14,38 @@ abstract class Token
     private const EMPTY_STRING = '';
     private const SINGEL_SPACE = ' ';
     private const CIPHER_ALGORITHM = 'sha512';
+    private const DATA_SEPARATOR = '-';
+    private const INITIAL_COUNTER = 0;
 
     private function randomStringFromDictionary(): string
     {
         $str = self::DICTIONARY . microtime();
-        $cad = '';
-        for ($i = 0; $i < self::MAX_NUMBER_OF_CHARS; ++$i) {
+        $cad = self::EMPTY_STRING;
+        for ($i = self::INITIAL_COUNTER; $i < self::MAX_NUMBER_OF_CHARS; ++$i) {
             $cad .= substr(
                 $str,
                 mt_rand(self::FIRST_CHAR, strlen($str)),
                 self::AMAUNT_OF_CHARS
-            ) . microtime();
+            ) . microtime() . mt_rand();
         }
 
-        return base64_encode(str_replace(self::SINGEL_SPACE, self::EMPTY_STRING, trim($cad)));
+        return base64_encode(str_replace(self::SINGEL_SPACE, self::EMPTY_STRING, $cad));
     }
 
-    protected function createRandomString($content = null): string
+    protected function createRandomString($content = ''): string
     {
         return  hash_hmac(
             self::CIPHER_ALGORITHM,
-            $this->randomStringFromDictionary() . $content,
-            str_shuffle(bin2hex(random_bytes(self::RANDOM_BYTES)) . md5($this->randomStringFromDictionary() . $content))
+            $this->randomStringFromDictionary() . self::DATA_SEPARATOR
+            . $content . self::DATA_SEPARATOR . microtime(),
+            bin2hex(random_bytes(self::RANDOM_BYTES)) .
+            md5(str_shuffle($this->randomStringFromDictionary() . $content . mt_rand()))
         );
     }
 
     abstract public function __toString(): string;
 
     abstract public function __invoke();
+
+    abstract public function equals(Token $token): bool;
 }

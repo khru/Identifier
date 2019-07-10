@@ -27,4 +27,14 @@ class RandomToken extends Token
     {
         return new static();
     }
+
+    public function count()
+    {
+        return strlen($this->token);
+    }
+
+    public function equals(Token $token): bool
+    {
+        return $this->__toString() === $token->__toString();
+    }
 }
